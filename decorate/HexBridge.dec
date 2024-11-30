@@ -1,0 +1,40 @@
+ACTOR BridgeBall_Toby : BridgeBall replaces BridgeBall
+{
+	States
+	{
+	Spawn:
+		TLGL A 2 Bright A_PlaySoundEx("hexen/bridge", "SoundSlot7", 1, -1)
+		TLGL A 1 Bright A_BridgeOrbit
+		Wait
+	}
+
+}
+
+
+ACTOR CustomBridge_Toby : CustomBridge replaces CustomBridge
+{
+	states
+	{
+	Spawn:
+		TLGL ABCDE 3 Bright 
+		Loop
+	See:
+		TLGL A 2 A_PlaySoundEx("hexen/bridge", "SoundSlot7", 1, -1)
+		TLGL A 2 A_BridgeInit
+		TLGL A -1
+		Stop
+	Death:
+		TLGL A 2
+		TLGL A 300
+		Stop
+	}
+}
+
+
+ACTOR Bridge_Toby : CustomBridge_Toby replaces Bridge
+{
+	Game Raven
+	SpawnID 21
+	RenderStyle None
+	Args 32, 2, 3, 0
+}

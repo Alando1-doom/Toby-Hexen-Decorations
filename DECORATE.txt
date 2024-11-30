@@ -1,0 +1,3 @@
+#include "decorate/HexLights.dec"
+#include "decorate/PoisonShroom.dec"
+#include "decorate/HexBridge.dec"

@@ -1,0 +1,210 @@
+ACTOR ZChandelier_Toby replaces ZChandelier
+{
+	Game Hexen
+	Radius 20
+	Height 60
+	+SPAWNCEILING
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		CDLR ABC 4 Bright
+		Loop
+	}
+}
+
+ACTOR FireThing_Toby replaces FireThing
+{
+	Game Hexen
+	Radius 5
+	Height 10
+	+SOLID
+	States
+	{
+	Spawn:
+		FSKL A 4 Bright A_PlaySoundEx("decoration/fire/smallfire", "Auto", 1, 0)
+		FSKL B 3 Bright
+		FSKL C 4 Bright
+		FSKL D 3 Bright
+		FSKL E 4 Bright
+		FSKL F 3 Bright
+		FSKL G 4 Bright
+		FSKL H 3 Bright
+		FSKL I 4 Bright
+		Loop
+	}
+}
+
+ACTOR BrassTorch_Toby replaces BrassTorch
+{
+	Game Hexen
+	Radius 6
+	Height 35
+	+SOLID
+	States
+	{
+	Spawn:
+		BRTR A 4 Bright A_PlaySoundEx("decoration/fire/brasstorch", "Auto", 1, 0)
+		BRTR BCDEFGHIJKLM 4 Bright
+		Loop
+	}
+}
+
+
+ACTOR ZTwinedTorch_Toby : SwitchableDecoration replaces ZTwinedTorch
+{
+	Game Hexen
+	Radius 10
+	Height 64
+	+SOLID
+	States
+	{
+	Active:
+		TWTR A 0 Bright A_PlaySound("Ignite")
+	Spawn:
+		TWTR A 4 Bright A_PlaySoundEx("decoration/fire/torch", "Auto", 1, 0)
+		TWTR BCDEFGH 4 Bright
+		Loop
+	Inactive:
+		TWTR I -1
+		Stop
+	}
+}
+
+ACTOR ZTwinedTorchUnlit_Toby : ZTwinedTorch_Toby replaces ZTwinedTorchUnlit
+{
+	Game Hexen
+	States
+	{
+	Spawn:
+		Goto Super::Inactive
+	}
+}
+
+ACTOR ZWallTorch_Toby : SwitchableDecoration replaces ZWallTorch
+{
+	Game Hexen
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+FIXMAPTHINGPOS
+	Radius 6.5
+	States
+	{
+	Active:
+		WLTR A 0 Bright A_PlaySound("Ignite")
+	Spawn:
+		WLTR A 5 Bright A_PlaySoundEx("decoration/fire/walltorch", "Auto", 1, 0)
+		WLTR BCDEFGH 5 Bright
+		Loop
+	Inactive:
+		WLTR I -1
+		Stop
+	}
+}
+
+ACTOR ZWallTorchUnlit_Toby : ZWallTorch_Toby replaces ZWallTorchUnlit
+{
+	Game Hexen
+	States
+	{
+	Spawn:
+		Goto Super::Inactive
+	}
+}
+
+ACTOR ZFireBull_Toby : SwitchableDecoration replaces ZFireBull
+{
+	Game Hexen
+	Radius 20
+	Height 80
+	+SOLID
+	States
+	{
+	Active:
+		FBUL I 4 Bright A_PlaySound("Ignite")
+		FBUL J 4 Bright
+	Spawn:
+		FBUL A 4 Bright A_PlaySoundEx("decoration/fire/bull", "Auto", 1, 0)
+		FBUL BCDEFG 4 Bright
+		Loop
+	Inactive:
+		FBUL JI 4 Bright
+		FBUL H -1
+		Stop
+	}
+}
+
+ACTOR ZFireBullUnlit_Toby : ZFireBull replaces ZFireBullUnlit
+{
+	Game Hexen
+	States
+	{
+	Spawn:
+		Goto Super::Inactive+2
+	}
+}
+
+ACTOR FlameSmall_Toby : SwitchableDecoration replaces FlameSmall
+{
+	Game Hexen
+	SpawnID 97
+	+NOTELEPORT
+	+INVISIBLE
+	Radius 15
+	RenderStyle Add
+	States
+	{
+	Active:
+		FFSM A 0 Bright A_PlaySound("Ignite")
+	Spawn:
+		FFSM A 3 Bright 
+		FFSM A 3 Bright A_UnHideThing
+		FFSM A 3 Bright A_PlaySoundEx("decoration/fire/smallfire", "Auto", 1, 0)
+		FFSM BCDE 3 Bright
+		Goto Spawn+2
+	Inactive:
+		FFSM A 2
+		FFSM B 2 A_HideThing
+		FFSM C 200
+		Wait
+	}
+}
+
+ACTOR FlameSmall2_Toby : FlameSmall_Toby
+{
+	Game Hexen
+	SpawnID 66
+}
+
+ACTOR FlameLarge_Toby : SwitchableDecoration replaces FlameLarge
+{
+	Game Hexen
+	SpawnID 99
+	+NOTELEPORT
+	+INVISIBLE
+	Radius 15
+	RenderStyle Add
+	States
+	{
+	Active:
+		FFLG A 0 Bright A_PlaySound("Ignite")
+	Spawn:
+		FFLG A 2 Bright
+		FFLG A 2 Bright A_UnHideThing
+		FFLG ABC 4 Bright
+		FFLG D 4 Bright A_PlaySoundEx("decoration/fire/brasstorch", "Auto", 1, 0)
+		FFLG EFGHIJKLMNOP 4 Bright
+		Goto Spawn+6
+	Inactive:
+		FFLG DCB 2
+		FFLG A 2 A_HideThing
+		FFLG A 200 
+		Wait
+	}
+}
+
+ACTOR FlameLarge2_Toby : FlameLarge_Toby
+{
+	Game Hexen
+	SpawnID 67
+}

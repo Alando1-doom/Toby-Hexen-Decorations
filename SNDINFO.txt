@@ -1,0 +1,21 @@
+$rolloff decoration/fire/walltorch	linear	32 256
+decoration/fire/walltorch			walltrch
+$rolloff decoration/fire/brasstorch	linear	64 320
+decoration/fire/brasstorch		brastrch
+$rolloff decoration/fire/smallfire	linear	40 320
+decoration/fire/smallfire			firesmal
+$rolloff decoration/fire/bull	linear	80 320
+decoration/fire/bull					firebull
+$rolloff decoration/fire/torch	linear	64 320
+decoration/fire/torch				torch
+$rolloff decoration/fire/brazier	linear	64 320
+decoration/fire/brazier				brazier
+
+$rolloff Drip	linear	40 320
+$rolloff PoisonShroomPain linear	40 320
+
+$rolloff poisoncloud/active linear	64 320
+poisoncloud/active			toxic
+
+$rolloff hexen/bridge linear	80 384
+hexen/bridge				sparkle
